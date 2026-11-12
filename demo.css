@@ -1,0 +1,23 @@
+/* Faixa de aviso da demonstração estática. Usa as cores do próprio portal quando existem. */
+#demo-faixa {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 7px max(16px, env(safe-area-inset-left, 0px));
+  background: #fbf0d9;
+  color: #5b3d00;
+  border-bottom: 1px solid #e8d3a6;
+  font: 13px/1.5 system-ui, "Segoe UI", Arial, sans-serif;
+  text-align: center;
+}
+#demo-faixa code {
+  background: rgba(0, 0, 0, .07);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+[data-theme="dark"] #demo-faixa {
+  background: #352a14;
+  color: #f1d9a5;
+  border-bottom-color: #4d3c1c;
+}
