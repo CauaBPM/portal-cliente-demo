@@ -77,7 +77,7 @@
   function login(body) {
     const p = CONTAS[(body.email || '').trim().toLowerCase()];
     if (!p || body.password !== SENHA) return erro(401, 'E-mail ou senha incorretos. Na demonstração, a senha de todas as contas é "demo".');
-    if (STAFF[p]) { pendente = p; return json(200, { status: 'mfa_required', mfa_token: 'demo-' + p }); }
+    // Na demonstração nenhum perfil pede o código de 2FA (no sistema real, equipe e administrador pedem).
     return entrar(p);
   }
   function entrar(p) {
@@ -231,7 +231,7 @@
     bar.id = 'demo-faixa';
     bar.innerHTML = '<strong>DEMONSTRAÇÃO</strong> · dados fictícios · nada é salvo · ' +
       'contas: <code>cliente@demo.test</code>, <code>funcionaria@demo.test</code>, <code>admin@demo.test</code> · ' +
-      'senha <code>demo</code> · código 2FA <code>123456</code>';
+      'senha <code>demo</code>';
     document.body.prepend(bar);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', banner); else banner();
