@@ -19,7 +19,7 @@ h2 { font-size: 1.15rem; margin: 24px 0 10px; }
 h3 { font-size: 1rem; margin: 16px 0 8px; }
 .muted { color: var(--muted); }
 .small { font-size: .86rem; }
-.mono { font-family: ui-monospace, Consolas, monospace; }
+.mono { font-family: ui-monospace, Consolas, monospace; overflow-wrap: anywhere; } /* hashes longos quebram no celular */
 .right { text-align: right; }
 .nowrap { white-space: nowrap; }
 .mt0 { margin-top: 0; }
