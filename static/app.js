@@ -1324,7 +1324,8 @@
       const r = await api('POST', '/api/admin/obligations/apply', body(true));
       result.replaceChildren(h('div', { class: 'alert' }, `${r.criar} obrigação(ões) serão criadas para ${r.empresas} empresa(s) em ${r.competencias.length} competência(s).`),
         Object.entries(r.por_regra).map(([k, s]) => h('div', { class: 'small' }, h('strong', { text: s.name }), ` — criar ${s.criar}, já existentes ${s.ja_existentes}, não aplicável ${s.nao_aplicavel}. `,
-          s.exemplos.length ? `Ex.: ${s.exemplos.map(x => `${x.empresa} ${period(x.competencia)} vence ${day(x.vencimento)}`).join('; ')}` : '')));
+          s.exemplos.length ? `Ex.: ${s.exemplos.map(x => `${x.empresa} ${period(x.competencia)} vence ${day(x.vencimento)}`).join('; ')}` : '',
+          (s.sem_data_valida || []).length ? h('div', { class: 'alert error small', text: `Sem data válida (não será criada): ${s.sem_data_valida.map(x => `${period(x.competencia)} — ${x.motivo}`).join('; ')}` }) : null)));
       go_.disabled = r.criar === 0;
     }));
     go_.addEventListener('click', busy(go_, async () => {
